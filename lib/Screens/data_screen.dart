@@ -148,3 +148,18 @@ class _DataScreenState extends State<DataScreen> {
     );
   }
 }
+/*
+widget life cycle
+stateful
+constructor
+create state
+init state
+build
+did dependency changed()
+dispose
+set state()
+
+-- stateless 
+constructor 
+build
+*/ 
