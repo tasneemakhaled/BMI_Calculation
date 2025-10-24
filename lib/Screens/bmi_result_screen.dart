@@ -1,9 +1,15 @@
 import 'package:bmi_app/Screens/data_screen.dart';
+import 'package:bmi_app/models/bmi_model.dart';
 import 'package:flutter/material.dart';
 
-class BmiCalacScreen extends StatelessWidget {
-  const BmiCalacScreen({super.key});
+class BmiResultScreen extends StatefulWidget {
+  const BmiResultScreen({super.key, required this.bmiModel});
+  final BmiModel bmiModel;
+  @override
+  State<BmiResultScreen> createState() => _BmiResultScreenState();
+}
 
+class _BmiResultScreenState extends State<BmiResultScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +34,7 @@ class BmiCalacScreen extends StatelessWidget {
                           style: TextStyle(fontSize: 16, color: Colors.white),
                         ),
                         Text(
-                          '16,5',
+                          '${widget.bmiModel.bmi.round()}',
                           style: TextStyle(fontSize: 22, color: Colors.white),
                         ),
                         Text(
@@ -40,7 +46,7 @@ class BmiCalacScreen extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  '180 cm',
+                                  '${widget.bmiModel.height}',
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.white,
@@ -63,7 +69,7 @@ class BmiCalacScreen extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  '70 km',
+                                  '${widget.bmiModel.weight}',
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.white,
@@ -94,8 +100,15 @@ class BmiCalacScreen extends StatelessWidget {
               ),
               SizedBox(height: 5),
               Container(
-                width: 290,
-                height: 240,
+                child: Column(
+                  children: [
+                    Text('${widget.bmiModel.risk}'),
+                    Text('${widget.bmiModel.summary}'),
+                    Text('${widget.bmiModel.recommendation}'),
+                  ],
+                ),
+                width: 350,
+                height: 280,
                 decoration: BoxDecoration(
                   color: Color(0xff01502E),
                   borderRadius: BorderRadius.circular(20),
@@ -107,7 +120,7 @@ class BmiCalacScreen extends StatelessWidget {
                   width: 250,
                   child: ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: WidgetStatePropertyAll(
+                      backgroundColor: MaterialStatePropertyAll<Color>(
                         Color(0xff484783),
                       ),
                     ),

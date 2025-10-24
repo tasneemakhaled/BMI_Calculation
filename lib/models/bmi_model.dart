@@ -1,17 +1,13 @@
-class BmiModel {
-  final double height;
-  final double weight;
-  final double bmi;
-  final String risk;
-  final String summary;
-  final String recommendation;
+import 'package:bmi_app/entities/bmi_entity.dart';
+
+class BmiModel extends BmiEntity {
   BmiModel({
-    required this.height,
-    required this.weight,
-    required this.bmi,
-    required this.risk,
-    required this.summary,
-    required this.recommendation,
+    required super.height,
+    required super.weight,
+    required super.bmi,
+    required super.risk,
+    required super.summary,
+    required super.recommendation,
   });
   factory BmiModel.fromJson(json) {
     return BmiModel(
